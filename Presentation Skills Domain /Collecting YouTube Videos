@@ -1,1 +1,105 @@
+! pip install youtube-search-python
+import numpy as np # linear algebra
+import pandas as pd 
+import re
+import sys
+import string
+from youtubesearchpython import VideosSearch
 
+videosSearch = VideosSearch('Presentation skill', limit = 20)
+
+
+punctuatedLine=[]
+textfileList=[]
+df = pd.read_csv("textfileInExcel.csv")# save the transcript of the video in excel file to process it easily
+
+fp=open('textfile.txt',"r")# file contains the punctuated transcript generated from the punctuation tool
+textWithPunc=[]
+
+textWithPunc=[x.split() for x in fp][0]
+print(textWithPunc)
+print()
+print(len(textWithPunc))
+fp.close()
+
+newTextWithPunc=[]
+textWithPunc1=[]
+tempWordCollection=[]
+start=0
+
+index=0
+
+#compare word by word between the transcript and the punctuated text
+
+for i in df['Transcript Text']:
+    newLine=i.split()# for each text line in the transcript, split it into list of words
+    
+    numberOfword=len(newLine)# count ho mqany word per line
+    print('newline= ',newLine,'  ','# of words= ',numberOfword,' Start=',start,' END= ',(start+numberOfword)-1,'  ','index= ')
+    print()
+    for k in newLine:# loop through the line in transcript based on the number of its words
+        
+        #One of the easiest ways to remove punctuation from a string in Python is to use the str.translate() method. 
+        #The translate method typically takes a translation table, which we’ll do using the .maketrans() method.
+        #The .maketrans() method here takes three arguments, the first two of which are empty strings, 
+        #and the third is the list of punctuation we want to remove. This tells the function to replace all punctuation 
+        #with None.
+        
+        k1=k.translate(str.maketrans('', '', string.punctuation))# the word from transcript is with no punctuation
+        #print('range= ',(start+numberOfword))
+        
+        if (start+numberOfword)<=len(textWithPunc):# it keep comparing words as long as the punctuated text did not ends.
+            for w in range(index,(start+numberOfword)): # loop through th punctuated text, strating from the position of 
+                #the last word checked previously and end with the last word in the text line we are processing
+                
+                w1=textWithPunc[w].translate(str.maketrans('', '', string.punctuation))# Remove the punctuation from the puntucated 
+                #text as well
+                
+                if str(w1).lower()==str(k1).lower():# comaprison is case sensetive, so both words should be in lower case
+                    
+                    tempWordCollection.append(str(w1).lower())# keep track of the words we have selected for the transcript
+                    
+                    newTextWithPunc.append(textWithPunc[w]) # save the same text from transcript but with punctuation
+                    index=textWithPunc.index(textWithPunc[w]) # save the index of the punctuated word in the punctuated text
+                    break
+        elif (start+numberOfword)>len(textWithPunc):
+            print('#of words exceeds*************')
+            print('index= ',index)
+            temporaryIndex=index
+            for w in range(index,len(textWithPunc)):
+                print('w= ',textWithPunc[w])
+                w1=textWithPunc[w].translate(str.maketrans('', '', string.punctuation))
+                print('w1= ',str(w1).lower(),'   ','k1= ',str(k1).lower())
+                #print()
+                if str(w1).lower()==str(k1).lower():
+                    #print('w= ',textWithPunc[w])
+                    #if str(w1).lower() not in tempWordCollection:
+                    tempWordCollection.append(str(w1).lower())
+                    #if textWithPunc[index] not in newTextWithPunc:
+                    newTextWithPunc.append(textWithPunc[index])
+                    index=(textWithPunc.index(textWithPunc[index]))
+                    break
+            #index=temporaryIndex
+
+            
+    textWithPunc1.append(newTextWithPunc)
+    print(newTextWithPunc)
+    print()
+    print('***********')
+    newTextWithPunc=[]
+    tempWordCollection=[]
+    start+=numberOfword
+    
+    
+import xlsxwriter
+workbook = xlsxwriter.Workbook('7MWaeOHDBOg With Punctuation.xlsx')# save the puncutaed transcript to file with the same video ID
+worksheet = workbook.add_worksheet('Text With Punct.')
+row=1
+col=0
+for i in textWithPunc1:
+    print(' '.join(i))
+    
+  
+    worksheet.write(row,col,' '.join(i))
+    row+=1
+workbook.close()    
