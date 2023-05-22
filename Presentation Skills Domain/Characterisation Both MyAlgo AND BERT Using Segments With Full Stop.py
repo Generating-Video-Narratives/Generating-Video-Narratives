@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
 import nltk
 import codecs
 import pronto
@@ -33,6 +39,8 @@ porter = PorterStemmer()
 wordnet_lemmatizer = WordNetLemmatizer()
 
 
+# In[2]:
+
 
 ont=Ontology('PresentationOntologyV4.2Validated-Anonymised.owl'  )
 oneItemParens=[]
@@ -64,6 +72,8 @@ for i in ont.terms():
     cleanedParents1=[] 
     
 
+
+# In[3]:
 
 
 firstword=''
@@ -124,9 +134,15 @@ for i in cleanedParents2:
               
 
 
+# In[4]:
+
+
 for i in words:
     print(i)
     print()
+
+
+# In[5]:
 
 
 #sent=['Accent','body','language','future','composed','key','principle','nonverbal','PowerPoint']
@@ -243,6 +259,11 @@ def word_Concept_Extraction(sent):
     return wordConcept
 
 
+
+
+# In[6]:
+
+
 from nltk.tokenize import RegexpTokenizer
      
 tokenizer = RegexpTokenizer(r'\\w+')
@@ -327,6 +348,7 @@ def findExplicitMentioned(v):
          
 
 
+# In[7]:
 
 
 ######### 1. Find Explicit mentioned words by passing df of text #################
@@ -452,6 +474,9 @@ print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
 print() 
 
 
+# In[10]:
+
+
 conceptsLength=[]
 for j in segmentCharacterisation:
     for i in j:
@@ -476,6 +501,9 @@ print('length of concepts = ',max(conceptsLength))
     
 
 
+# In[31]:
+
+
 for i in segmentCharacterisation:
     for j in i:
         print(j)
@@ -484,6 +512,9 @@ for i in segmentCharacterisation:
             
     print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
     print()
+
+
+# In[38]:
 
 
 import xlsxwriter
@@ -841,7 +872,7 @@ for j in segmentCharacterisation:
 workbook.close()  
 
 
-
+# In[ ]:
 
 
 
