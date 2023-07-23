@@ -1,1 +1,186 @@
+# Generic
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import warnings, gc
+warnings.filterwarnings("ignore")
+
+# Tensorflow
+import tensorflow as tf
+
+# ktrain
+import ktrain
+from ktrain import text
+
+# sklearn
+from sklearn.model_selection import train_test_split
+
+from tensorflow import keras
+tf.__version__
+
+df = pd.read_csv("Training Data For the Topic- PhysicalHealth .csv", header='infer')
+# Dropping Null Values
+df.dropna(inplace=True)
+
+# Total Records
+print("Total Records: ", df.shape[0])
+
+# Inspect
+df.head()
+# Data Split
+target = ['Topic']
+data = ['Sentence']
+
+X = df[data]
+y = df[target]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y , test_size=0.1, random_state=42)
+print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
+
+
+# Common Parameters
+max_len = 500
+batch_size = 16
+learning_rate = 5e-5
+epochs = 5
+
+#########
+## With Transformer = bert-base-uncased
+######
+# Transformer Model
+model_ = 'bert-base-uncased'
+t_mod = text.Transformer(model_, maxlen=500, classes = ['No','PhysicalHealth'])
+
+
+'''Converting split data to list [so it can processed]'''
+#train
+X_tr = X_train['Sentence'].tolist()
+y_tr = y_train['Topic'].tolist()
+
+#test
+X_ts = X_test['Sentence'].tolist()
+y_ts = y_test['Topic'].tolist()
+
+
+# Pre-processing training & test data
+train = t_mod.preprocess_train(X_tr,y_tr)
+test = t_mod.preprocess_train(X_ts,y_ts)
+
+# Model Classifier
+model = t_mod.get_classifier()
+
+learner = ktrain.get_learner(model, train_data=train, val_data=test, batch_size=batch_size)
+
+# Train Model
+learner.fit_onecycle(learning_rate, epochs)
+
+# model Validation
+x = learner.validate(class_names=t_mod.get_classes())
+
+ktrain.get_predictor(learner.model,preproc=t_mod).save('PhysicalHealthBinaryClassifier2')
+predictor = ktrain.get_predictor(learner.model, preproc=t_mod)
+predictor.save("./ktrain/PhysicalHealthClassifier2")
+
+!pip install xlrd
+
+df1=pd.read_excel("Patient Segments as one data entry for Bert Characterisation .xlsx")
+#classes = ['Delivery','Structure','Visual Aids']
+classes = ['No','PhysicalHealth']
+
+
+segmentId=df1['SegmentId']
+segList=list(segmentId)
+
+startTime=df1['StartTime']
+strList=list(startTime)
+
+endTime=df1['EndTime']
+endList=list(endTime)
+
+transcript=df1['Transcript']
+transList=list(transcript)
+
+
+#To save the transcript as one string (paragraph) to be passed to the predictor
+i=0
+print('len(segList) ',len(segList),'  len(strList) ',len(strList),'  len(endList) ',len(endList), '  len(transList) ',len(transList))
+segTranscript=[]
+allSegmentsTrans=[]
+startime=strList[0]
+endTime=endList[0]
+segTrigger=segList[i]
+while i <= len(segList):
+    #print(segList[i])
+    #print()
+    if segList[i+1]==str('nan'):
+        #print(segList[i],'  ==  ',segList[i+1])
+        #print()
+        segTranscript.append(transList[i])
+        #segTranscript.append(transList1[i+1])
+        print( transList[i])
+        #print( transList1[i+1])
+        print()
+        i+=1
+    else:
+        print(segList[i],'  !=  ',segList[i+1])
+        #print()
+        #print('start time= ',strList[i+1],'    ','end time= ',endList[i+1])
+
+        segTranscript.append(transList[i])
+        listToString=' '.join([str(item) for item in segTranscript ])
+        allSegmentsTrans.append([segTrigger,startime,endTime,segTranscript,listToString])
+        print(listToString)
+        print()
+        segTranscript=[]
+        
+        startime=strList[i+1]
+        endTime=endList[i+1]
+        segTrigger=segList[i+1]
+        i+=1
+if  [segTrigger,startime,endTime,segTranscript,listToString] not in  allSegmentsTrans:
+    allSegmentsTrans.append([segTrigger,startime,endTime,segTranscript,listToString])
+
+# Write the annotation result to Excel File
+
+import xlrd
+import xlsxwriter
+workbook = xlsxwriter.Workbook('Health Domain-PatientStories-BinaryClassifier BERT-PhysicalHealth2.xlsx')
+worksheet = workbook.add_worksheet('Sheet1')
+worksheet.write('A1', 'SegmentId')
+worksheet.write('B1', 'StartTime')
+worksheet.write('C1', 'EndTime')
+worksheet.write('D1', 'Transcript')
+worksheet.write('E1', 'Topic')
+row=1
+col=0
+transRow=0
+
+for i in range(0,len(segList)):# allSegmentsTrans:
+    print(segList[i])
+    #print(i[4])
+    #print()
+    #print('row= ',row)
+    #print()
+    mainRow=row
+    worksheet.write(row,col,str(segList[i]))
+    worksheet.write(row,col+1,str(strList[i]))
+    worksheet.write(row,col+2,str(endList[i]))
+    worksheet.write(row,col+3,str(transList[i]))
+    #transRow=row
+    #for j in i[3]:
+    #    if str(j)!='nan':
+    #        worksheet.write(row,col+3,str(j))
+    #        row+=1
+    print('prediction= ',predictor.predict(str(transList[i])))
+    print()
+    worksheet.write(mainRow,col+4,predictor.predict(str(transList[i])))
+    
+    row+=1
+    col=0
+        
+        
+
+    
+workbook.close()   
+
+
 
