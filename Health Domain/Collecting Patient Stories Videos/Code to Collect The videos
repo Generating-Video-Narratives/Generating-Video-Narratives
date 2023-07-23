@@ -1,1 +1,123 @@
+! pip install youtube-search-python
+import xlrd
+import re
+from nltk.tokenize import PunktSentenceTokenizer,sent_tokenize, word_tokenize
+#### 1.  Create the segments from each video
+import pandas as pd
+import xlsxwriter
+df = pd.read_csv("ontologyConcepts.csv")
+conceptsPath=[]
+splitConList=[]
+concept=[]
+conceptPath2=[]
+for i in range(0, len(df['Concept'])):
+    listOFC=[df['Concept'][i],df['Unnamed: 1'][i],df['Unnamed: 2'][i],df['Topic'][i]]
+    conceptsPath.append([x for x in listOFC if str(x)!='nan'])
+for i in conceptsPath:
+    print('i= ',i)
+    for c in i:
+        if len(str(c))>3:
+            concept=re.sub( r"([A-Z])", r" \1", c).split()
+            #print('concept ',concept)
+            if len(concept)==1:
+                splitConList.append(c)
+            else:
+                for k in concept:
+                    splitConList.append(k)
+        else:
+            splitConList.append(c)
+            
+    conceptPath2.append(splitConList)
+    splitConList=[]
 
+for i in conceptPath2 :      
+    print(list(dict.fromkeys(i)))
+
+counter=0
+for c in conceptPath2:
+  if len(c)>1:
+      searchTerms=str('Health Quality of Life')+' '+ str(c[-1])+' AND '
+      #for con in range(0,len(c)-1):
+      searchTerms+=str(c[0]+' ')
+      searchTerms+=' patient storyl'
+  counter+=1
+print('# of search terms= ', counter)    
+# this code for the thesis table about the collected videos data
+
+from youtubesearchpython import VideosSearch
+from youtube_transcript_api import YouTubeTranscriptApi
+searchTerms=''
+videosCollection=[]
+videosList=[]
+videosCounter=0
+numberOfSerachTerms=0
+uniqueVideos=0
+videoValues=[]
+termsForSearch=['story','view','talk','opinion','experience']
+for c in conceptsPath:
+    if len(c)>1:
+        searchTerms=str('Health Quality of Life Respritory illness')+' '+ str(c[-1])+' AND '
+        #for con in range(0,len(c)-1):
+        searchTerms+=str(c[0]+' ')
+        searchTerms+=' patient story '
+        oldserachTerm=searchTerms
+        #for t in termsForSearch:
+        #searchTerms=oldserachTerm # to keep the search term change the words from the search list without adding them at the top of each other
+        #searchTerms+=t
+
+        numberOfSerachTerms+=1
+
+
+        videosSearch = VideosSearch(searchTerms, limit = 3)
+        videoDetails=[]
+        fullTransAsList=[]
+        counter=0
+        viewValue=False
+
+        videoValues.append([searchTerms,len(list(videosSearch.result().values()))])
+        print(videoValues)
+        print('_____________________________________')
+        for i in list(videosSearch.result().values()):
+            videosCounter+=len(i)
+            #print('# of videos per term',len(i))
+            #print('*************************************')
+            for j in list(i):
+                if j['id'] not in videosList:
+                    videosList.append(j['id'])
+                    #print(j)
+                    #print()
+                    uniqueVideos+=1
+                    transcript=[]
+                    try:
+                        counter+=1
+
+                        transcript=YouTubeTranscriptApi.get_transcript(j['id'])
+                    except:
+                        z=0
+                    #if transcript:
+                        #for t in transcript:
+                            #print("t['text']" ,t['text'],"    t['start'] "    ,t['start'],"    t['Duration'] ",t['duration'])
+                            #print()
+                        #print()
+                    for k in list(j.values()):
+                        videoDetails.append(k)
+                        #print(k)
+                        #print()
+                    #videoDetails.append([searchTerms,len(list(videosSearch.result().values()))])
+                        
+                    if transcript: 
+                        for t in transcript:
+                            fullTransAsList.append([t['text'],t['start'],t['duration']])
+                    viewValue=False
+                    videoDetails.append(str(c[0]))
+                    videoDetails.append(str(c[-1]))
+                    videoDetails.append(fullTransAsList)
+                    videosCollection.append(videoDetails)
+                    videoDetails=[]
+                    fullTransAsList=[]
+                    transcript=[]
+
+print('# of all search terms= ',numberOfSerachTerms)
+print('# of all videos collected ',videosCounter)
+print('# of Unique videos collected ',uniqueVideos ) 
+           
