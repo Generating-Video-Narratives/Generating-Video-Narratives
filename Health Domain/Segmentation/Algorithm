@@ -1,1 +1,303 @@
+import xlrd
+from nltk.tokenize import PunktSentenceTokenizer,sent_tokenize, word_tokenize
+#### 1.  Create the segments from each video
+import pandas as pd
+import xlsxwriter
+import os
+
+#### The characterisation work
+################################################################################
+import nltk
+import codecs
+import pronto
+import itertools
+#import owlready
+#from owlready import *
+
+from nltk.corpus import stopwords, wordnet
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer, PorterStemmer
+import signal, ctypes
+from pronto import Ontology
+from pronto import *
+import re
+
+from pandas import DataFrame
+import math
+from difflib import SequenceMatcher
+import sys
+import collections
+from collections import Counter
+import statistics 
+from nltk.wsd import lesk
+from nltk.corpus import wordnet as wn
+lemmatizer = WordNetLemmatizer()
+
+###############################################################################
+
+def convertTime(seconds):
+    
+    
+    #seconds %= 3600
+    minutes = seconds // 60
+    seconds %= 60
+     
+    return "%02d:%02d" % (minutes, seconds)
+
+videosExcelFile='Data_Patients2.xlsx'    
+xls1= pd.ExcelFile(videosExcelFile)
+#xls2= pd.ExcelFile('JavaProgrammingDomainSegments3MinutesEach.xlsx')
+
+
+
+# Get the sheets from both excel workbooks
+presentationSheetNames=xls1.sheet_names
+#javaSheetNames=xls2.sheet_names
+
+# calculate howmany videos I can create by joining segmnet from both domain.I need 5 segments from each domain to create 30 minutes video
+# no of segments from presentation domain is less than from Jave, so I will use it to claculate # videos to avoid out of range issue
+
+noOfVideos=len(presentationSheetNames)
+print('# of videos = ',noOfVideos)
+#print(sheetNames)
+
+### Get the segments with thier metadata for the first video
+allArtificialVideos=[]
+artificialVideo=[]
+videoMetaData=[]
+artificialVideoWithoutTime=[]
+allArtificialVideosWithoutTime=[]
+counterOfDomainVideo=0
+df_idP=[]
+df_topicP=[]
+df_textP=[]
+df_timeP=[]
+df_Video=[]
+for i in  range(noOfVideos):       
+    presentationSheetIteration = pd.read_excel(videosExcelFile, sheet_name=presentationSheetNames[i])
+    
+       
+    ####### Get the presentation segment
+    df_idP=presentationSheetIteration['VideoId'].tolist()
+    
+            
+    df_Video.append([presentationSheetIteration['VideoId'].tolist()[0],
+                     presentationSheetIteration['Start'].tolist(),
+                     presentationSheetIteration['Transcript'].tolist()])
+    
+    
+    #df_topicP.append(presentationSheetIteration['Topic'])
+    
+endOfSentPunc=['.','?','!']
+newTrans=[]
+videoTranscript=[]
+counter=0
+
+for i in df_Video:
+    if counter < 16:
+        counter+=1
+        trans=i[2]
+        newTrans=[]
+        for j in range(0,len(trans)) :
+
+
+            newLine=str(trans[j]).split()
+            #print(' newLine ',newLine)
+
+            if newLine[0] in endOfSentPunc:
+                newTrans[j-1].append(newLine[0])
+
+                newTrans.append(newLine[1:])
+
+            else:
+                newTrans.append(newLine)
+        newStart=[]       
+        for j in i[1]:
+            newStart.append(convertTime(j))
+        i[1]=  newStart  
+        videoTranscript.append([i[0],i[1],newTrans])
+        newTrans=[]
+    elif counter >= 16:
+        counter+=1
+        trans=i[2]
+        newTrans=[]
+        for j in range(0,len(trans)) :
+
+
+            newLine=str(trans[j]).split()
+
+            if newLine[0] in endOfSentPunc:
+                newTrans[j-1].append(newLine[0])
+
+                newTrans.append(newLine[1:])
+
+            else:
+                newTrans.append(newLine)
+        videoTranscript.append([i[0],i[1],newTrans])
+        newTrans=[]
+    
+    
+print('len of videos' , len(videoTranscript))
+for i in videoTranscript:
+    print('i[1][-1] ',i[1][-1])
+    print()
+    for j in i :
+        
+        print(j)
+
+        print()
+    print('_________________________________________________')
+
+allVideosSeg=[]
+allVideos=[]
+endOfSentPunc=['.','?','!']
+for v in videoTranscript:#search through all the videos and their data
+    
+    print('v[0]= ',v[0])
+
+    videoTime=v[1]
+    videoTrans=v[2]
+
+    segTime=[]
+    segText=[]
+    segment=[]
+    segm=[]
+    wordsCollected=[]
+    start=0
+    fullStopFound='False'
+    videoSegemnts=[]
+    numberOfLines=0
+    foundCounter=0
+    for j in range(0, len(videoTrans)):
+        #print('videoTrans[j][-1] ',videoTrans[j][-1],'len(videoTrans[j][-1]) ',len(videoTrans[j][-1]),'   videoTrans[j][-1][-1] ',videoTrans[j][-1][-1])
+        #print()
+
+        if numberOfLines <6 :# and videoTranscript[i][j][-1] not in endOfSentPunc:
+            print('videoTime[i] =',videoTime[j])
+            numberOfLines+=1
+            #print('j' , j,'   len(videoTime) ',len(videoTime))
+            print('videoTrans[j] ',videoTrans[j])
+            if videoTime[j] not in segTime:
+                print('1. videoTrans[j] is addedd ')
+                segTime.append(videoTime[j])
+            wordsCollected.append(videoTrans[j])
+
+        elif numberOfLines >= 6 :#and videoTrans[j][-1][-1] not in endOfSentPunc:
+            numberOfLines+=1
+            print('videoTime[i] =',videoTime[j])
+            for w in videoTrans[j]:
+                if w[-1] in endOfSentPunc:
+                    foundCounter+=1
+            if foundCounter==0:
+                if videoTime[j] not in segTime:
+                    print('2. videoTrans[j] is addedd ')
+                    segTime.append(videoTime[j])
+                wordsCollected.append(videoTrans[j])
+            else:
+
+
+
+
+                if videoTime[j] not in segTime:
+                    print('3. videoTrans[j] is addedd ')
+                    segTime.append(videoTime[j])
+                    wordsCollected.append(videoTrans[j])
+
+            segment.append([segTime[0],segTime[-1],wordsCollected])
+            videoSegemnts.append([segTime[0],segTime[-1],wordsCollected])
+            #    else:
+            #        segment.append([segTime[0],segTime[-1],wordsCollected])
+            #        videoSegemnts.append([segTime[0],segTime[-1],wordsCollected])
+
+
+            segment=[]
+            segText=[]
+            segTime=[]
+            start=videoTime[j]
+            numberOfLines=0
+            foundCounter=0
+            #numberOfLines+=1
+            wordsCollected=[]
+            #if videoTime[j] not in segTime:
+            #    segTime.append(videoTime[j])
+            #    wordsCollected.append(videoTrans[j])
+    print('videoTime[j]= ',videoTime[j],'  videoTrans[j] ',videoTrans[j])
+    print()
+
+
+    #if videoTime[j] not in segTime:
+    #print('3. videoTrans[j] is addedd ')
+    segTime.append(videoTime[j])
+    wordsCollected.append(videoTrans[j])
+
+    segment.append([segTime[0],segTime[-1],wordsCollected])
+    videoSegemnts.append([segTime[0],segTime[-1],wordsCollected])
+    print([v[0],videoSegemnts])
+    print()
+    allVideos.append([v[0],videoSegemnts])
+    videoSegemnts=[]
+    wordsCollected=[]
+    segTime=[]
+    segment=[]
+
+temp1=[]
+temp2=[]
+for i in allVideos:
+    temp1.append(i[0])
+    #print('i[0] ',i[0])
+    #print()
+    temp1.append(i[1])
+    temp1[1][-1][-1]=temp1[1][-1][-1][:-1]
+    print(i[1][-1][-1][:-1])
+    print()
+    temp2.append(temp1)
+    temp1=[]
+print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+for i in temp2:
+    for j in i:
+        print(j)
+        print()
+    print('_________________________________')
+
+allVideos=temp2
+workbook = xlsxwriter.Workbook('Patients segments-NewWithTwoConditions.xlsx')
+worksheet = workbook.add_worksheet()
+worksheet.write('A1', 'SegmentId')
+worksheet.write('B1', 'StartTime')
+worksheet.write('C1', 'EndTime')
+worksheet.write('D1', 'Transcript')
+row=1
+col=0
+
+for i in allVideos:
+    col=0
+    count=1
+    
+    
+    # start,end and transcript are saved as second element in i=1
+    for j in i[1]:
+        worksheet.write(row,col,str(i[0])+str(count))
+
+        worksheet.write(row,col+1,j[0]) # write the start time
+        worksheet.write(row,col+2,j[1]) # write the end time
+        tempCol=col+3
+        sentence=' '
+        if j[2]:
+            for k in j[2]:
+                print('k ',k)
+                sentence=' '.join(str(w) for w in k)
+
+                worksheet.write(row,tempCol,sentence)
+
+                row+=1
+        else:
+            worksheet.write(row,tempCol,'')
+            row+=1
+        count+=1
+    
+      
+workbook.close()
+   
 
