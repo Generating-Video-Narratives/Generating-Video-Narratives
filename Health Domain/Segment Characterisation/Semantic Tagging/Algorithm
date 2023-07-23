@@ -1,1 +1,372 @@
+!pip install xlrd
 
+!pip install textblob
+
+from textblob import TextBlob
+import nltk
+import codecs
+
+import itertools
+#import owlready
+#from owlready import *
+from nltk.tokenize import PunktSentenceTokenizer,sent_tokenize, word_tokenize
+from nltk.corpus import stopwords, wordnet
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer, PorterStemmer
+import signal, ctypes
+
+import re
+import pandas as pd
+from pandas import DataFrame
+import math
+from difflib import SequenceMatcher
+import sys
+import collections
+from collections import Counter
+from collections import OrderedDict
+import statistics 
+from nltk.wsd import lesk
+#!pip install spacy
+#!pip install  gensim
+import string
+gensim =  frozenset({'everyone', 'however', 'toward', 'perhaps', 'regarding', 'upon', 'detail', 'with', 'former', 'everything', 'himself', 'beyond', 'ourselves', 'though', 'their', 'computer', 'twenty', 'up', 'behind', 'how', 'whenever', 'move', 'me', 'noone', 'find', 'further', 'whereas', 'none', 'thin', 'were', 'nobody', 'always', 'our', 'becomes', 'cant', 'wherever', 'else', 'and', 'found', 'say', 'last', 'couldnt', 'my', 'nor', 'so', 'during', 'various', 'thru', 'another', 'off', 'while', 'besides', 'already', 'fill', 'does', 'again', 'seems', 'first', 'or', 'there', 'kg', 'as', 'now', 'inc', 'anything', 'interest', 'into', 'alone', 'unless', 'towards', 'do', 'eleven', 'at', 'ten', 'yourself', 'take', 'few', 'by', 'anyone', 'own', 'out', 'ltd', 'through', 'still', 'becoming', 'cannot', 'could', 'didn', 'km', 'she', 'above', 'those', 'themselves', 'used', 'other', 'part', 'con', 'eg', 'hereby', 'back', 'over', 'someone', 'un', 'top', 'anyway', 'go', 'must', 'front', 'seeming', 'bill', 'herein', 'cry', 'others', 'see', 'them', 'am', 'bottom', 'yourselves', 'nine', 'mostly', 'therein', 'enough', 'name', 'herself', 'whereafter', 'his', 'doing', 'within', 'sometime', 'latterly', 'among', 'was', 'show', 'can', 'who', 'has', 'keep', 'doesn', 'every', 'down', 'everywhere', 'between', 'per', 'often', 'that', 'have', 'amoungst', 'mine', 'than', 'thereby', 'afterwards', 'also', 'please', 'somewhere', 'once', 'never', 'neither', 'for', 'around', 'serious', 'via', 'de', 'somehow', 'full', 'i', 'both', 'forty', 'system', 'mill', 'would', 'make', 'after', 'which', 'nothing', 'empty', 'seemed', 'these', 'moreover', 'beside', 'hereafter', 'anyhow', 'when', 'from', 'ever', 'will', 'under', 'to', 'each', 'amongst', 'along', 'until', 'give', 'myself', 'whence', 'if', 'such', 'about', 'sixty', 'most', 'fifty', 'latter', 'before', 'ours', 'whoever', 'nevertheless', 'many', 'without', 'across', 'quite', 'might', 'its', 'it', 'but', 'otherwise', 'being', 'namely', 'ie', 'not', 'made', 'thereafter', 'yours', 'is', 'should', 'throughout', 'eight', 'sincere', 'well', 'more', 'using', 're', 'on', 'several', 'hers', 'thereupon', 'due', 'did', 'three', 'five', 'even', 'onto', 'the', 'except', 'then', 'don', 'side', 'whither', 'next', 'him', 'something', 'below', 'sometimes', 'been', 'seem', 'same', 'in', 'you', 'because', 'her', 'either', 'they', 'hundred', 'where', 'together', 'just', 'whereupon', 'hereupon', 'itself', 'almost', 'twelve', 'your', 'done', 'thick', 'meanwhile', 'beforehand', 'hasnt', 'fifteen', 'hence', 'whereby', 'some', 'anywhere', 'he', 'had', 'this', 'amount', 'yet', 'what', 'us', 'became', 'fire', 'call', 'against', 'formerly', 'become', 'four', 'rather', 'two', 'we', 'may', 'less', 'put', 'co', 'why', 'nowhere', 'really', 'here', 'of', 'too', 'six', 'get', 'although', 'thus', 'third', 'etc', 'wherein', 'describe', 'no', 'are', 'whole', 'whatever', 'elsewhere', 'indeed', 'any', 'therefore', 'whether', 'since', 'very', 'all', 'only', 'one', 'thence', 'an', 'least', 'whom', 'whose', 'much', 'be', 'a'})
+from nltk.stem import PorterStemmer
+porter = PorterStemmer()
+wordnet_lemmatizer = WordNetLemmatizer()
+from nltk.stem import WordNetLemmatizer
+
+wnl = WordNetLemmatizer()
+dataframe1 = pd.read_excel('ontologyConcepts.xlsx')
+fullConceptPath=[]
+#for i in dataframe1:
+#    print(i)
+topics=dataframe1['Topic'].tolist()
+concept=dataframe1['Concept'].tolist()
+concept2=dataframe1['Unnamed: 1'].tolist()
+concept3=dataframe1['Unnamed: 2'].tolist()
+for i in range(0,len(topics)):
+    #if concept3[i]:
+        
+    fullConceptPath.append([concept[i],concept2[i],concept3[i],topics[i]])
+    
+    
+fullConceptNoNan=[]
+for i in fullConceptPath:
+    i=[x for x in i if str(x)!='nan']
+    fullConceptNoNan.append(i)
+print(len(fullConceptNoNan))  
+phCount=0
+psCount=0
+socount=0
+levelCount=0
+personalCount=0
+envCount=0
+
+for i in fullConceptNoNan: # ontology concept with no nan
+    if i[-1]=='PhysicalHealth':
+        phCount+=1
+        
+    elif i[-1]=='LevelOfIndependence':
+        levelCount+=1
+        
+    elif i[-1]=='PersonalValuesAndBeliefs':
+        personalCount+=1
+        
+    elif i[-1]=='SocialRelationship':
+        socount+=1
+        
+    elif i[-1]=='PsychologicalHealth':
+        psCount+=1
+        
+    elif i[-1]=='Environment':
+        envCount+=1
+    
+    print(i)
+    print()
+print('Physical health concepts= ',phCount)
+print('Level concepts= ',levelCount)
+print('Personal Values concepts= ',personalCount)
+print('Psychological health concepts= ',psCount)
+print('Social Relationship concepts= ',socount)
+print('Environment concepts= ',envCount)
+######### 1. Find Explicit mentioned words by passing df of text #################
+# Function to generate n-grams from sentences.
+def extract_ngrams(data, num):
+    n_grams = TextBlob(data).ngrams(num)
+    return [ ' '.join(grams) for grams in n_grams]
+
+
+
+
+     
+def findNgramConcepts(ng,n):
+    conceptFound=[]
+    for j in ng:
+        #print()
+        #print('j= ',j)
+        for c in fullConceptNoNan:
+            #print('c[0] ',c[0])
+            j=j.replace(" ", "")
+            if j !='will':
+                if n==1:
+                    j= wnl.lemmatize(j)
+                    c[0]=wnl.lemmatize(c[0])
+                if str(j).lower()==str(c[0]).lower():
+                    conceptFound.append(c)
+    return conceptFound
+
+def extractTranscriptConcepts(s):
+    explicitConcepts=[]
+    n=1
+    for i in s:
+        ngram1=extract_ngrams(i, 1)
+        ngram2=extract_ngrams(i, 2)
+        ngram3=extract_ngrams(i, 3)
+        ngram4=extract_ngrams(i, 4)
+
+        if len(findNgramConcepts(ngram1,n))>0:
+
+            explicitConcepts.append(findNgramConcepts(ngram1,n))
+
+        if len(findNgramConcepts(ngram2,0))>0:
+
+            explicitConcepts.append(findNgramConcepts(ngram2,0))
+
+        if len(findNgramConcepts(ngram3,0))>0:
+
+            explicitConcepts.append(findNgramConcepts(ngram3,0))
+            
+        if len(findNgramConcepts(ngram4,0))>0:
+
+            explicitConcepts.append(findNgramConcepts(ngram4,0))
+            
+    return explicitConcepts
+
+
+
+videosnumber=1 
+videoCounter=0
+commentSheet=[]
+allCommnetSheet=[]
+lemmatizer = WordNetLemmatizer()   #lemmatizes the words
+ps = PorterStemmer()    #stemmer stems the root of the word.
+stop_words = set(stopwords.words('english' ))
+senSimilarity=[]
+explicit_word=[]
+span=[]
+parents=[]
+fullVideoCharacterisation=[]
+allSegmentsCharatcerisation=[]
+
+topicsList=[]
+topicKeys=[]
+topicValues=[] 
+topics=[]    
+focusTopic=[]
+allTopicsFocus=[]
+focusConcept1=[]
+concept1OfAllTopicsAreFocus1=[]
+superConcepts=[]
+superConceptsCount=[]
+
+subConcepts=[]
+subConceptsCount=[]
+
+subConceptsCount=[]
+topicsWithFreq=[]
+segmentTopicCharacterisation=[]
+superConceptsCount=[]
+transAsString=' '
+##### Main Program Without intervals##############
+
+
+print()
+
+dfc=pd.read_csv("Patients segments-NewWithTwoConditions.csv", header='infer',encoding="cp1252")#encoding='utf8')# # #encoding="cp1252"
+for i in dfc:
+    print(i)
+
+segmentId=list(dfc['SegmentId'])
+startTime=list(dfc['StartTime'])
+endTime=list(dfc['EndTime'])
+transcript=list(dfc['Transcript'])
+#topicList=list(dfc['Topic'])
+
+video=segmentId[0]
+segment=[]
+videoSegment=[]
+
+sId=[]
+sTime=[]
+eTime=[]
+tr=[]
+to=[]
+for i in range(0,len(transcript)):
+
+    if segmentId[i]==video or str(segmentId[i])==str('nan'):
+        sId.append(segmentId[i])
+        sTime.append(startTime[i])
+        eTime.append(endTime[i])
+        tr.append(transcript[i])
+        #to.append(topicList[i])
+        transAsString+= str(' '+str(transcript[i]))
+
+
+    else:
+        sId1=list(set(sId))
+        sTime1=[x for x in sTime if str(x) !='nan']
+        eTime1=[x for x in eTime if str(x) !='nan']
+
+        videoSegment.append([sId1,sTime1,eTime1,tr,transAsString])
+
+        sId=[]
+        sTime=[]
+        eTime=[]
+        tr=[]
+        to=[]
+        transAsString=''
+        video=segmentId[i]
+        sId.append(segmentId[i])
+        sTime.append(startTime[i])
+        eTime.append(endTime[i])
+        tr.append(transcript[i])
+        #to.append(topicList[i])
+        transAsString+= str(transcript[i])
+sId1=list(set(sId))
+sTime1=[x for x in sTime if str(x) !='nan']
+eTime1=[x for x in eTime if str(x) !='nan']
+
+videoSegment.append([sId1,sTime1,eTime1,tr,transAsString])    
+
+#print('# of segment = ',len(videoSegment))
+
+
+print('***************************************')
+#ontStemedWords=ontologyStemmedWords()
+#for i in ontStemedWords:
+#    print('ontology stem words = ',i)
+#    print()
+print('*************************************')
+segmentCharacterisation=[]
+
+print('# of all video segments before matching characterisation with BERT topics= ',len( videoSegment))
+print()
+#for i in words:
+#    print('words= ', i)
+#    print()
+explicitWords=[]
+for i in videoSegment:
+    bertTopics=[]
+    print('i[0]= ',i[0])
+    print()
+    print('i[3]= ',i[3])
+    print()
+    #explicitWords=findExplicitMentioned(i[4])
+    #sentence=findExplicitMentioned(i[3])
+    #for j in i[3]:
+    if i[3]:
+        if str(i[3][0])!='nan':
+            if len(extractTranscriptConcepts(i[3]))>0:
+                explicitWords.append(extractTranscriptConcepts(i[3]))
+
+    #print('explicitWords before removing []= ',explicitWords)
+    #print()
+    explicitWords=[x for x in explicitWords if x!=[]]
+    print([i[0],i[1],i[2],i[3],explicitWords])
+    print()
+    
+    segmentCharacterisation.append([i[0],i[1],i[2],i[3],explicitWords])
+    explicitWords=[]
+    
+print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+print('# of segments found= ',len(segmentCharacterisation)) 
+print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+print() 
+# to help in deciding the number of columns needed to write the result of characterisation to Excel sheet
+conceptsLength=[]
+for j in segmentCharacterisation:
+    for i in j:
+        print(i)
+        print()
+        
+    print('***********************************')
+for j in segmentCharacterisation:
+    
+    if j[4]:
+        for c in j[4]:
+            if c:
+                ##print('c= ',c)
+                #if len(c)>1:
+                for cc in c:
+                        
+                
+                    conceptsLength.append(len(cc))
+                #else:
+                #    conceptsLength.append(len(c[0][1]))
+print('length of concepts = ',max(conceptsLength))
+
+import xlsxwriter
+workbook = xlsxwriter.Workbook('Patients Stories Semantic Charac .xlsx')
+worksheet = workbook.add_worksheet('Sheet1')
+worksheet.write('A1', 'SegmentId')
+worksheet.write('B1', 'Start')
+worksheet.write('C1', 'End')
+worksheet.write('D1', 'Transcript')
+worksheet.write('E1', 'Focus Concepts')
+worksheet.write('H1', 'Focus Topics')
+
+row=1
+col=0
+
+
+
+videoName=[]
+start=[]
+end=[]
+trans=[]
+transcript=[]
+for i in segmentCharacterisation:
+    print('i[0] ',i[0])
+    if len(i[0])>1:
+        if str(i[0][0])!='nan':
+            worksheet.write(row,col,i[0][0])
+        else:
+            worksheet.write(row,col,i[0][1])
+    elif len(i[0])==1:
+        worksheet.write(row,col,i[0][0])
+    print('i[1] ',i[1])
+    print('i[1][0] ',i[1][0])    
+    worksheet.write(row,col+1,i[1][0])
+    worksheet.write(row,col+2,i[2][0])
+    oldCol=col+3
+    oldRow1=row
+    for j in i[3]:
+        
+        if str(j)!='nan':
+            worksheet.write(oldRow1,oldCol,j)
+            oldRow1+=1
+    
+    oldRow2=row
+    oldCol=col+4
+    if i[4]:
+        for j in i[4]:
+            if j:
+                    
+                for k in j:
+                    for k1 in k[-1][:-1]:
+                    
+                        worksheet.write(oldRow2,oldCol,k1)
+                        oldCol+=1
+                    worksheet.write(oldRow2,7,k[-1][-1])
+                    oldRow2+=1
+                    oldCol=col+4
+                        
+    if oldRow1>oldRow2:               
+        row=oldRow1+1
+    else:
+        row=oldRow2+1
+        
+    col=0
+workbook.close()  
