@@ -1,0 +1,1488 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/main/ontologies/2022/5/QOLHD1"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/main/ontologies/2022/5/QOLHD1">
+    <Prefix name="" IRI="http://www.semanticweb.org/main/ontologies/2022/5/QOLHD1#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AccessToGreenSpace"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Accessibility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AccessibiltyOfSocial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Aching"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcquiringInformation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcutePain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AddressingMinorAilments"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Alcohol"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Anger"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Anxiety"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Appearance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AppetiteLoss"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Apprehension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Asthma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bathing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Behaviour"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Belief"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BodyImage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BowelIssues"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Breathlessness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bronchitis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Buddhism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CareInformation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CarePlan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Caregiver"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CaregiverAssistance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChestPain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Child"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Christian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChronicPain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Church"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Climate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveFunction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Community"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ComplexMedication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Concentration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Copd"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cough"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Covid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CulturalFactors"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DailyLiving"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Depression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Determination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diarrhea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Digestion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dirt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DisableAccess"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Discomfort"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Drowsiness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Drug"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dyspnea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EconomicStatus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Education"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EndOfLifeCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Endurance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Energy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Environment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EquipmentCost"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Excitement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Exercise"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Existentiality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Family"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fatigue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fear"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fever"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FinancialIssue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FinancialSchemes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Flexibility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FlexibleWorking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FluidIntake"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FoodPreparation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Friend"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FuneralPlan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Furious"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Glad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Grandchild"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Grief"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Guilt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gym"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HeartBroken"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hinduism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hope"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hopelessness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Humorous"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Husband"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypochondriac"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Income"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Inheritance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Injuries"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Insomnia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Insurance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Irritability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Jewish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LanguageDifficulty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Learning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LegalIssue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Leisure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LevelOfIndependence"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LossOfIncome"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LossOfInterest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LossOfPleasure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Loving"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LoweringOfMood"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LungCancer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LungDisease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalAid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalInformation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalSelfCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicineCost"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicineIntake"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meditation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Memory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MentalHealth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mindfulness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mobility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MobilityAid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mosque"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mould"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mum"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Muslim"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nausea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NegativeFeeling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nervousness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Noise"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NutrientIntake"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Occupation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Oedema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Optimisim"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrganDonation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OtherSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parks"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PartTime"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PeriodicRest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PersonalRelationship"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PersonalValuesAndBeliefs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalEnvironment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalHealth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pleased"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pneumonia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pollution"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PositiveFeeling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pray"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PsychologicalHealth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PulmonaryFibrosis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PulmonaryHypertension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pulmonary_Rehab"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#QualityOfSocialCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Recreation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Redundancy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rehabilitation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Relative"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Relaxation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Religion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReligiousCelebration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Remembering"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RespiratoryIllness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RunnyNose"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sadness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Safety"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Satisfied"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Scared"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Security"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SeekingEmergencyCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SelfEsteem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SenseOfIsolation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SexualActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ShortnessOfBreath"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Showering"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sleep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Smoking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sneezing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialRelationship"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocioEconomicallyDisadvantaged"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoreThroat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Soreness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpiritualResources"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpiritualServices"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spirituality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spouse"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Strength"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SwellenLymphNodes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tearfulness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Temple"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Thinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TightChest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Toileting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Toxine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Traffic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Training"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Transport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TravelExpenses"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Treatment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TreatmentCost"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tumor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Value"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vaping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wheezing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wife"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Will"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WorkCapacity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Workload"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AccessToGreenSpace"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Accessibility"/>
+        <Class IRI="#WorkCapacity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AccessibiltyOfSocial"/>
+        <Class IRI="#SocialCare"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Aching"/>
+        <Class IRI="#Pain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AcquiringInformation"/>
+        <Class IRI="#Environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AcutePain"/>
+        <Class IRI="#Pain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AddressingMinorAilments"/>
+        <Class IRI="#MedicalSelfCare"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Alcohol"/>
+        <Class IRI="#Behaviour"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Anger"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Anxiety"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Appearance"/>
+        <Class IRI="#BodyImage"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AppetiteLoss"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Apprehension"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Asthma"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bathing"/>
+        <Class IRI="#DailyLiving"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Behaviour"/>
+        <Class IRI="#PhysicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Belief"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BodyImage"/>
+        <Class IRI="#PsychologicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BowelIssues"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Breathlessness"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bronchitis"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Buddhism"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CareInformation"/>
+        <Class IRI="#AcquiringInformation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CarePlan"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Caregiver"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CaregiverAssistance"/>
+        <Class IRI="#DailyLiving"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChestPain"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Child"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Christian"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChronicPain"/>
+        <Class IRI="#Pain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Church"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Climate"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveFunction"/>
+        <Class IRI="#PsychologicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Community"/>
+        <Class IRI="#SocialActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComplexMedication"/>
+        <Class IRI="#Treatment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Concentration"/>
+        <Class IRI="#CognitiveFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Copd"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cough"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Covid"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CulturalFactors"/>
+        <Class IRI="#SocialActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dad"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DailyLiving"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Depression"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Determination"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diarrhea"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diet"/>
+        <Class IRI="#Behaviour"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Digestion"/>
+        <Class IRI="#Diet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dirt"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DisableAccess"/>
+        <Class IRI="#Mobility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Discomfort"/>
+        <Class IRI="#Pain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drowsiness"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drug"/>
+        <Class IRI="#Behaviour"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dyspnea"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EconomicStatus"/>
+        <Class IRI="#Environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Education"/>
+        <Class IRI="#EconomicStatus"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EndOfLifeCare"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Endurance"/>
+        <Class IRI="#Energy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Energy"/>
+        <Class IRI="#PhysicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EquipmentCost"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Excitement"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Exercise"/>
+        <Class IRI="#Rehabilitation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Existentiality"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Family"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fatigue"/>
+        <Class IRI="#Energy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fear"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fever"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FinancialIssue"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FinancialSchemes"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Flexibility"/>
+        <Class IRI="#Energy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FlexibleWorking"/>
+        <Class IRI="#WorkCapacity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FluidIntake"/>
+        <Class IRI="#Diet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FoodPreparation"/>
+        <Class IRI="#DailyLiving"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Friend"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FuneralPlan"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Furious"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Glad"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Grandchild"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Grief"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Guilt"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gym"/>
+        <Class IRI="#Rehabilitation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HeartBroken"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hinduism"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hope"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hopelessness"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Humorous"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Husband"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypochondriac"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Income"/>
+        <Class IRI="#EconomicStatus"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Inheritance"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Injuries"/>
+        <Class IRI="#MedicalSelfCare"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Insomnia"/>
+        <Class IRI="#Rest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Insurance"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Irritability"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Jewish"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LanguageDifficulty"/>
+        <Class IRI="#SocialActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Learning"/>
+        <Class IRI="#CognitiveFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LegalIssue"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Leisure"/>
+        <Class IRI="#Rehabilitation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LossOfIncome"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LossOfInterest"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LossOfPleasure"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Loving"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LoweringOfMood"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LungCancer"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LungDisease"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalAid"/>
+        <Class IRI="#Treatment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalInformation"/>
+        <Class IRI="#AcquiringInformation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalSelfCare"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicineCost"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicineIntake"/>
+        <Class IRI="#Treatment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meditation"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Memory"/>
+        <Class IRI="#CognitiveFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MentalHealth"/>
+        <Class IRI="#CognitiveFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mindfulness"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mobility"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MobilityAid"/>
+        <Class IRI="#Mobility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mom"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mosque"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mould"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mum"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Muslim"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nausea"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NegativeFeeling"/>
+        <Class IRI="#PsychologicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nervousness"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Noise"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NutrientIntake"/>
+        <Class IRI="#Diet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupation"/>
+        <Class IRI="#EconomicStatus"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Oedema"/>
+        <Class IRI="#OtherSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Optimisim"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OrganDonation"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OtherSymptoms"/>
+        <Class IRI="#PhysicalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pain"/>
+        <Class IRI="#PhysicalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parents"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parks"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PartTime"/>
+        <Class IRI="#WorkCapacity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PeriodicRest"/>
+        <Class IRI="#Rest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PersonalRelationship"/>
+        <Class IRI="#SocialRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalEnvironment"/>
+        <Class IRI="#Environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalHealth"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalSymptoms"/>
+        <Class IRI="#PhysicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pleased"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pneumonia"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pollution"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PositiveFeeling"/>
+        <Class IRI="#PsychologicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pray"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PsychologicalHealth"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PulmonaryFibrosis"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PulmonaryHypertension"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pulmonary_Rehab"/>
+        <Class IRI="#Treatment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#QualityOfSocialCare"/>
+        <Class IRI="#SocialCare"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Recreation"/>
+        <Class IRI="#Rehabilitation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Redundancy"/>
+        <Class IRI="#WorkCapacity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rehabilitation"/>
+        <Class IRI="#Environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Relative"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Relaxation"/>
+        <Class IRI="#Rest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Religion"/>
+        <Class IRI="#PersonalValuesAndBeliefs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReligiousCelebration"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Remembering"/>
+        <Class IRI="#CognitiveFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RespiratoryIllness"/>
+        <Class IRI="#PhysicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+        <Class IRI="#PhysicalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rest"/>
+        <Class IRI="#PhysicalHealth"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RunnyNose"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sadness"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Safety"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Satisfied"/>
+        <Class IRI="#PositiveFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Scared"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Security"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SeekingEmergencyCare"/>
+        <Class IRI="#MedicalSelfCare"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SelfEsteem"/>
+        <Class IRI="#BodyImage"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SenseOfIsolation"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SexualActivity"/>
+        <Class IRI="#SocialActivity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ShortnessOfBreath"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Showering"/>
+        <Class IRI="#DailyLiving"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sleep"/>
+        <Class IRI="#Rest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Smoking"/>
+        <Class IRI="#Behaviour"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sneezing"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialActivity"/>
+        <Class IRI="#SocialRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialCare"/>
+        <Class IRI="#Environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocioEconomicallyDisadvantaged"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoreThroat"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Soreness"/>
+        <Class IRI="#Pain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpiritualResources"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpiritualServices"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spirituality"/>
+        <Class IRI="#PersonalValuesAndBeliefs"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spouse"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Strength"/>
+        <Class IRI="#Energy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SwellenLymphNodes"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tearfulness"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Temple"/>
+        <Class IRI="#Religion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tension"/>
+        <Class IRI="#NegativeFeeling"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thinking"/>
+        <Class IRI="#CognitiveFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TightChest"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Toileting"/>
+        <Class IRI="#DailyLiving"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Toxine"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Traffic"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Training"/>
+        <Class IRI="#AcquiringInformation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Transport"/>
+        <Class IRI="#PhysicalEnvironment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TravelExpenses"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Treatment"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TreatmentCost"/>
+        <Class IRI="#FinancialIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tumor"/>
+        <Class IRI="#RespiratoryIllness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Value"/>
+        <Class IRI="#Spirituality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vaping"/>
+        <Class IRI="#Behaviour"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wheezing"/>
+        <Class IRI="#RespiratoryIllnessSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wife"/>
+        <Class IRI="#PersonalRelationship"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Will"/>
+        <Class IRI="#LegalIssue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WorkCapacity"/>
+        <Class IRI="#LevelOfIndependence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Workload"/>
+        <Class IRI="#WorkCapacity"/>
+    </SubClassOf>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
